@@ -26,7 +26,12 @@ body, html {
     background: transparent;
 }
 
-
+h1{
+    text-align: center;
+    font-family: Palatino;
+    font-size: 300%;
+    padding: 20px;
+}
 
 input[type=text], select {
     text-align: left;
