@@ -1,0 +1,47 @@
+body, html {
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.bg {
+    /* The image used */
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, .3) 0%,rgba(255, 255, 255, 0.7) 100%), url("wallpapers.jpg");    
+
+    /* Full height */
+    height: auto; 
+    width: auto;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.clock{
+    padding: 0 0 50px 0;
+    margin: 0 620px;
+    background: transparent;
+}
+
+
+
+input[type=text], select {
+    text-align: left;
+    font-size: 150%;
+    width: 500px;
+    padding: 0 20px;
+    margin: 0 510px;
+    display: inline-block;
+    border-style: hidden;
+    border-bottom: solid; 
+    background: transparent;
+}
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
