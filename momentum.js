@@ -31,14 +31,12 @@ function showPosition(position) {
             forecast = data.current.condition.text;
             var WTcondition = $(".condition");
             WTcondition.append(forecast);
-            
         }).error(function(e) {
             $(".weather").append('Sorry! Not Loaded');
         });
         $('.weather').submit(loadData);
     });
 }
-
 window.onload = getLocation;
 
 
