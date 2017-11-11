@@ -28,15 +28,19 @@ function showPosition(position) {
             forecast = data.current.temp_c;
             var temp = $(".temp");
             temp.append(forecast+ "&#8451;");
-            forecast = data.current.condition.text;
-            var WTcondition = $(".condition");
-            WTcondition.append(forecast);
-        }).error(function(e) {
+            forecast = data.current.condition.text;            
+            var weahterIcon =  data.current.condition.icon;
+            var weatherIconObj = $('body').find("#WTicon");
+            weatherIconObj.attr('src',"http:"+weahterIcon);
+            weatherIconObj.attr('title',forecast);
+            
+        }).fail(function(e) {
             $(".weather").append('Sorry! Not Loaded');
         });
         $('.weather').submit(loadData);
     });
 }
+
 window.onload = getLocation;
 
 

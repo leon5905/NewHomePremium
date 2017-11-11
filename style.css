@@ -26,6 +26,13 @@ p{
     font-size: 70%;
 }
 
+#Wticon{
+    float: right;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+}
+
 .welcome{  
     float: left;
     padding-left: 635px;
