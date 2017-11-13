@@ -8,8 +8,6 @@ var clock = $(".clock").clock({
 })
 var clock = $("#clock").clock(),
 data = clock.data();
-// pause the clock
-data.pause();
 // start the clock
 data.start();
 // set a new date

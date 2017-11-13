@@ -33,6 +33,7 @@ function showPosition(position) {
             var weatherIconObj = $('body').find("#WTicon");
             weatherIconObj.attr('src',"http:"+weahterIcon);
             weatherIconObj.attr('title',forecast);
+            weatherIconObj.css('display','block');
             
         }).fail(function(e) {
             $(".weather").append('Sorry! Not Loaded');
