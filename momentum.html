@@ -2,20 +2,24 @@
     <head>
         <script type="text/javascript" src="jquery-3.2.1.min.js"></script>
         <script type="text/javascript" src="clock/clock-1.1.0.min.js"></script>
+        <script type="text/javascript" src="clock.js"></script>
         <script type="text/javascript" src="momentum.js"></script>
+        <script type="text/javascript" src="flipclock.min.js"></script>
+        
         
         <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="flipclock.css">        
         <link rel="stylesheet" href="slideshow_bg.css">
                 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
     </head>
     <body>
-        <!--
-        <div class="bg">    
-            -->
+        <div class="ctn" style="filter:none">
             <div class="welcome">
                 <h1>Welcome</h1> 
             </div>
-        
+            <div class="loading">Loading Weather...</div>
             <div class="weather">                 
                 <label style="font-size:17px"  class="region"></label>
                 <label style="font-size:17px" class="temp"></label>  
@@ -24,14 +28,21 @@
             <div class="clock"></div>
             
             <div class="search">
-                    <form method="GET" action="http://www.google.com/search">
+                    <form class="search_form" method="GET" action="http://www.google.com/search">
                         <input class="submit" type="text" name="q" placeholder="Search Google..." size="75%" autofocus/>
                     </form>
             </div>
-        <!--                      
+            <img class="setting" id="setting" src="images/setting.png"></img> 
+                     
         </div>
-    -->  
-        <script type="text/javascript" src="clock.js"></script>
+    
+    <div class="pop_bg"></div>
+    <div class="popup_tab">            
+        <div class="popup_tab_container">
+            
+        </div>
+    </div>
+
         <script type="text/javascript" src="slideshow_bg.js"></script>
         
     </body>
