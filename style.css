@@ -66,3 +66,63 @@ textarea:focus,
 button:focus {
     outline: none;
 }
+
+.search{
+    position: absolute;
+    display: flex;
+    bottom: 15%;     
+}
+
+.search_form{
+    margin: auto;
+}
+
+.loading{
+    position: absolute;
+    top: 3px;
+    right: 10px;    
+}
+
+.setting{
+    
+    position: absolute;
+    bottom: 8px;
+    right: 13px;
+    height: 30px;
+    width: 30px;
+}
+
+.popup_tab{
+    position: absolute;
+    z-index: 3;
+    display: none;
+   background: transparent;
+    width: 100%;
+    top:0;
+    height:100%;
+}
+
+.popup_tab_container{
+    background-color: #fefefe;
+    width:500px;
+    margin: auto;
+    display:block;
+    align-items: center;
+    vertical-align: middle;
+    
+    border: 1px solid #888;
+}
+
+.pop_bg{
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
