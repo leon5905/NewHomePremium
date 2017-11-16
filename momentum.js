@@ -1,5 +1,15 @@
+  function onGot(item) {
+    console.log(item);
+  }
+  
+  function onError(error) {
+    console.log(`Error: ${error}`);
+  }
+
 $(document).ready(function(){
     clockHelper.loadClockFromStorage();
+    $('.clock_opt').hide();
+    $('.SE_opt').hide();
 
     $('.submit').keydown(function(event){
         if(event.keyCode == 13){
@@ -8,50 +18,136 @@ $(document).ready(function(){
         }
     });
 
-    var setting = document.getElementById("setting");
+    var setting = $('.setting');
     var popup = $('.pop_bg');
     var pop = $('.popup_tab');
     var content =$('.ctn');
-    var filterVal = "blur(5px)";
-    setting.addEventListener('click', function(){              
+    var filterVal = "blur(7px)";
+    setting.click(function(){
         popup.css('display','block');
         pop.css('display', 'flex');
         content.css('filter', filterVal);
     });
     
+    var clock_list = $('.clock_opt');
+    var SE_list = $('.SE_opt');    
     pop.click(function(){
         popup.css('display','none'); 
         pop.css('display', 'none');
-        content.css('filter', 'none');       
-    });
-    
+        content.css('filter', 'none'); 
+        container.css('filter', 'none');
+        clock_list.hide();
+        SE_list.hide();             
+    });    
     var container = $('.popup_tab_container');
+    
+    //**Setting option DIV */
     var clockSetting = settingHelper.generateToolPageEntry('','Clock Setting','Customise Clock','blue');
-    clockSetting.click(function(){
-        
+    clockSetting.click(function(e){
+        clock_list.show();
+        container.css('filter', filterVal);
+        e.stopPropagation();     
     });
-
     container.append(clockSetting);
+    var searchEngine = settingHelper.generateToolPageEntry('','Search Setting','Changes Search Site','blue');
+    searchEngine.click(function(e){
+        SE_list.show();
+        container.css('filter', filterVal);
+        e.stopPropagation();
+    });
+    container.append(searchEngine);
+
+    //**Clock option DIV */
+    var clock_1 = clockOption.generateClockOption('images/clock1.png','200px');
+    clock_1.click(function(){
+        popup.css('display','none'); 
+        pop.css('display', 'none');
+        content.css('filter', 'none'); 
+        container.css('filter', 'none');
+        $('.clock_opt').hide();
+        let clkval ={
+            val:1
+        }
+        browser.storage.local.set({clkval}); 
+        let result = browser.storage.local.get("clkval");
+        result.then(onGot, onError);
+        location.reload();
+    })
+    clock_list.append(clock_1);
+    var clock_2 = clockOption.generateClockOption('images/clock2.png','200px');
+    clock_2.click(function(){
+        popup.css('display','none'); 
+        pop.css('display', 'none');
+        content.css('filter', 'none'); 
+        container.css('filter', 'none');
+        $('.clock_opt').hide();
+        let clkval ={
+            val:2
+        }
+        let setting = browser.storage.local.set({clkval});
+        setting.then(null, onError);      
+        location.reload();
+    })
+    clock_list.append(clock_2);
+
+    var SE_1 = clockOption.generateClockOption('images/chrome.ico','100px');
+    SE_1.click(function(){
+        popup.css('display','none'); 
+        pop.css('display', 'none');
+        content.css('filter', 'none'); 
+        container.css('filter', 'none');
+        SE_list.hide();
+        $('.search_form').attr('action',"http://www.google.com/search");
+        $('.submit').attr('placeholder',"Search Goodle...");
+    })
+    SE_list.append(SE_1);
+    var SE_2 = clockOption.generateClockOption('images/bing.png','100px');
+    SE_2.click(function(){
+        popup.css('display','none'); 
+        pop.css('display', 'none');
+        content.css('filter', 'none'); 
+        container.css('filter', 'none');
+        SE_list.hide();
+        $('.search_form').attr('action',"http://www.bing.com/search");
+        $('.submit').attr('placeholder',"Search Bing...");
+    })
+    SE_list.append(SE_2);
+    var SE_3 = clockOption.generateClockOption('images/yahoo.ico','100px');
+    SE_3.click(function(){
+        popup.css('display','none'); 
+        pop.css('display', 'none');
+        content.css('filter', 'none'); 
+        container.css('filter', 'none');
+        SE_list.hide();
+        $('.search_form').attr('action',"http://www.yahoo.com/search");
+        $('.submit').attr('placeholder',"Search Yahoo...");
+    })
+    SE_list.append(SE_3);
 });
 
-var clockHelper={
-    loadClockFromStorage:function(){
+var clockHelper = {
+    loadClockFromStorage: function () {
         // browser.storage.local.get();
-
-        var clockVariable =2;
-        switch(clockVariable){
-            case 1:
-            clock.oriClock();
-            $('.clock').css('margin','0 600px');
-            $('.clock').css('padding-top','0');
-            break;
-            case 2:
-            clock.clock1();
-            $('.clock').css('margin','0 530px');
-            $('.clock').css('padding-top','120px');
-            break;
-        }
-        
+        var clockVariable = 1;
+        let results = browser.storage.local.get({ clkval:"" })
+        results.then(onGot, onError);
+        results.then(function (e) {            
+            if (e.clkval.val != "")
+                clockVariable = e.clkval.val;
+            
+            switch (clockVariable) {
+                case 1:
+                    clock.oriClock();
+                    $('.clock').css('margin', '0 600px');
+                    $('.clock').css('padding-top', '0');
+                    break;
+                case 2:
+                    clock.clock1();
+                    $('.clock').css('margin', '0 530px');
+                    $('.clock').css('padding-top', '120px');
+                    break;
+            }
+        });
     }
 }
 
@@ -181,6 +277,51 @@ var settingHelper={
         returnResult.append(label);
         return returnResult;
     }
+}
+
+var clockOption={
+    generateClockOption:function(ClockImg, size){
+    var div = clockOption.generateContentSectionStandardDiv();//Div
+    div.addClass('popup-setting-div');
+    div.css('cursor','pointer');
+
+    //Logo Section
+    var ImgContainer = $('<div></div>');
+    var imgs = $('<img></img>');
+    imgs.attr('src',ClockImg);    
+    imgs.css('font-size','36px');
+    imgs.css('margin','auto');
+    ImgContainer.css('display','flex');
+    ImgContainer.css('align-items','center');
+    ImgContainer.css('height',size);
+    ImgContainer.css('width',size);
+    ImgContainer.append(imgs);
+    div.append(ImgContainer);
+
+    return div;
+    },
+
+    generateContentSectionStandardDiv:function(){ //Genereate per row standard div
+        var returnResult = $('<div></div>');
+        returnResult.css('background-color','white');
+        returnResult.css('padding','8px');
+        returnResult.hover(function(){
+            returnResult.css('background-color','gainsboro');
+        },
+        function(){
+            returnResult.css('background-color','white');
+        });
+        returnResult.click(function(){
+            returnResult.find('.content-focus').focus();
+        });
+        
+        returnResult.css('border-bottom','1px solid #E8E8E8');
+        returnResult.css('display','flex');
+        returnResult.css('align-items','center');
+        returnResult.css('width','auto');
+
+        return returnResult;
+    },
 }
 
 $(document).keydown(function(event) {

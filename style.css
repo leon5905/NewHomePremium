@@ -83,8 +83,7 @@ button:focus {
     right: 10px;    
 }
 
-.setting{
-    
+.setting{    
     position: absolute;
     bottom: 8px;
     right: 13px;
@@ -96,7 +95,7 @@ button:focus {
     position: absolute;
     z-index: 3;
     display: none;
-   background: transparent;
+    background: transparent;
     width: 100%;
     top:0;
     height:100%;
@@ -107,9 +106,33 @@ button:focus {
     width:500px;
     margin: auto;
     display:block;
-    align-items: center;
-    vertical-align: middle;
-    
+    align-items: center;    
+    border: 1px solid #888;
+}
+
+.clock_opt{
+    position: absolute;
+    top: 35%;
+    left: 35%;
+    background-color: #fefefe;
+    width:auto;
+    z-index: 5;
+    margin: auto;
+    display:flex;
+    align-items: center;    
+    border: 1px solid #888;
+}
+
+.SE_opt{
+    position: absolute;
+    top: 35%;
+    left: 39%;
+    background-color: #fefefe;
+    width:auto;
+    z-index: 6;
+    margin: auto;
+    display:flex;
+    align-items: center;    
     border: 1px solid #888;
 }
 
