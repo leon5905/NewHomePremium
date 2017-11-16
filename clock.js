@@ -8,12 +8,7 @@ var clock={
             theme: 't2',      // set theme  => 't1' 't2' 't3'
             date: new Date()  // set date => new Date()
         })
-        var clock = $("#clock").clock(),
-        data = clock.data();
-        // start the clock
-        data.start(); 
-        // set a new date
-        data.setTime(new Date());
+        var clock = $("#clock").clock()        
     },
     clock1:function(){
         var clock = new FlipClock($('.clock'), 100, {
