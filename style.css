@@ -120,6 +120,7 @@ button:focus {
     margin: auto;
     display:flex;
     align-items: center;    
+
     border: 1px solid #888;
 }
 
@@ -133,6 +134,7 @@ button:focus {
     margin: auto;
     display:flex;
     align-items: center;    
+
     border: 1px solid #888;
 }
 

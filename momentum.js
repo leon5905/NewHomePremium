@@ -11,6 +11,7 @@ $(document).ready(function(){
     $('.clock_opt').hide();
     $('.SE_opt').hide();
 
+
     $('.submit').keydown(function(event){
         if(event.keyCode == 13){
             this.form.submit();
@@ -29,8 +30,10 @@ $(document).ready(function(){
         content.css('filter', filterVal);
     });
     
+
     var clock_list = $('.clock_opt');
     var SE_list = $('.SE_opt');    
+
     pop.click(function(){
         popup.css('display','none'); 
         pop.css('display', 'none');
@@ -73,6 +76,7 @@ $(document).ready(function(){
         result.then(onGot, onError);
         location.reload();
     })
+
     clock_list.append(clock_1);
     var clock_2 = clockOption.generateClockOption('images/clock2.png','200px');
     clock_2.click(function(){
@@ -88,6 +92,7 @@ $(document).ready(function(){
         setting.then(null, onError);      
         location.reload();
     })
+
     clock_list.append(clock_2);
 
     var SE_1 = clockOption.generateClockOption('images/chrome.ico','100px');
@@ -123,12 +128,14 @@ $(document).ready(function(){
         $('.submit').attr('placeholder',"Search Yahoo...");
     })
     SE_list.append(SE_3);
+
 });
 
 var clockHelper = {
     loadClockFromStorage: function () {
         // browser.storage.local.get();
         var clockVariable = 1;
+
         let results = browser.storage.local.get({ clkval:"" })
         results.then(onGot, onError);
         results.then(function (e) {            
@@ -146,6 +153,7 @@ var clockHelper = {
                     $('.clock').css('margin', '0 530px');
                     $('.clock').css('padding-top', '120px');
                     break;
+
             }
         });
     }
@@ -280,7 +288,9 @@ var settingHelper={
 }
 
 var clockOption={
+
     generateClockOption:function(ClockImg, size){
+
     var div = clockOption.generateContentSectionStandardDiv();//Div
     div.addClass('popup-setting-div');
     div.css('cursor','pointer');
@@ -293,8 +303,10 @@ var clockOption={
     imgs.css('margin','auto');
     ImgContainer.css('display','flex');
     ImgContainer.css('align-items','center');
+
     ImgContainer.css('height',size);
     ImgContainer.css('width',size);
+
     ImgContainer.append(imgs);
     div.append(ImgContainer);
 
