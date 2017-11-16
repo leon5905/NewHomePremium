@@ -1,10 +1,13 @@
 {
 	"manifest_version": 2,
 
-	"name": "sample",
-	"description": "sample",
-	"version": "0.1",
-    
+	"name": "NewHomePremium",
+	"description": "A modifyable new tab page with clock, weather forecast, slide show background and etc",
+	"icons":{
+		"48":"images/icon.png"
+	},
+	"version": "0.1",	
+
 	"chrome_url_overrides": {
 		"newtab": "momentum.html"
 	},

@@ -120,6 +120,21 @@ button:focus {
     margin: auto;
     display:flex;
     align-items: center;    
+
+    border: 1px solid #888;
+}
+
+.SE_opt{
+    position: absolute;
+    top: 35%;
+    left: 39%;
+    background-color: #fefefe;
+    width:auto;
+    z-index: 6;
+    margin: auto;
+    display:flex;
+    align-items: center;    
+
     border: 1px solid #888;
 }
 
