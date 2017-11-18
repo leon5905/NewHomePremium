@@ -1,5 +1,7 @@
 var clock={
     oriClock:function(){
+        
+
         $.getScript("clock/clock-1.1.0.min.js");
         
         var clock = $(".clock").clock({
