@@ -18,7 +18,7 @@ $(document).ready(function () {
     clockHelper.loadClockFromStorage();
     $('.clock_opt').hide();
     $('.SE_opt').hide();
-
+    $('.search_form').focus();
     $('.submit').keydown(function (event) {
         if (event.keyCode == 13) {
             this.form.submit();
@@ -357,7 +357,6 @@ $(document).ready(function () {
         )
     })
     interactive_list.append(interactive4);
-
 });
 
 var MainHelper = {
